@@ -6,13 +6,18 @@ public class Player {
     private final int money;
     private int buyLottoCount;
     private final String POSSIBLE_CHARACTERS = "[0-9]+";
-//    private final List<Lotto> lottos;
+    private List<Lotto> lottos;
+
+    public void Lottos(List<Lotto> lottos) {
+        this.lottos = lottos;
+    }
+
 
     public Player(int money) {
         this.money = money;
     }
 
-    public void buyLottos() {
+    public void buyLotto() {
         this.buyLottoCount= this.money / 1000;
     }
 
