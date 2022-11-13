@@ -1,9 +1,13 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.model.Lotto;
 import lotto.model.Player;
 
-public class PlayerInputView {
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class InputView {
     private static final String ASK_PURCHASE_AMOUNT_MESSAGE = "구입금액을 입력해 주세요.";
     private static final String PURCHASE_LOTTO_COUNT_MESSAGE = "%d개를 구매했습니다.";
     private static final String PURCHASE_LOTTO_NUMBERS_MESSAGE = "%s";
@@ -37,5 +41,17 @@ public class PlayerInputView {
 
     public static void printBuyLottoCount(int buyLottoCount) {
         System.out.println(buyLottoCount + "개를 구매했습니다.");
+    }
+
+    public static void printBuyLottoNumbers(List<Lotto> lottos) {
+        lottos.forEach(InputView::PrintEachLottoNumbers);
+    }
+
+    private static void PrintEachLottoNumbers(Lotto lotto) {
+        String combinedLottoNumbers = lotto.getNumbers()
+                .stream()
+                .map(number -> String.valueOf(number))
+                .collect(Collectors.joining(", "));
+        System.out.println("[" + combinedLottoNumbers + "]");
     }
 }
