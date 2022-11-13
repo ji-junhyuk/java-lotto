@@ -27,3 +27,9 @@
         - [ ] 고른 숫자가 1개 이어야 한다.
         - [ ] 숫자만 입력받아야 한다.
         - [ ] 고른 숫자가 당첨 번호에 없어야 한다.
+
+### 구조
+- MVC패턴을 적용한다.
+![(1-1) 4](https://user-images.githubusercontent.com/67992469/201466230-032431ba-090f-478d-a713-cfb5a2969c5e.jpg)
+![(1-1) 6](https://user-images.githubusercontent.com/67992469/201466244-87c9fdb1-62ab-43dd-a6b5-8663056ba995.jpg)
+
