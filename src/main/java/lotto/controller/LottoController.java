@@ -9,10 +9,9 @@ public class LottoController {
 
     public static void startGame() {
         Player player = new Player(PlayerInputView.getPurchaseAmount());
-        player.buyLotto();
         PlayerInputView.printBuyLottoCount(player.getBuyLottoCount());
+        player.buyLotto(LottoMachine.selectLottoNumbersAllLotto(player.getBuyLottoCount()));
 
-        player.Lottos(LottoMachine.selectLottoNumbersAllLotto(player.getBuyLottoCount()));
  //       Presenter presenter = new Presenter(GetWinningnumbers());
  //       LottoMachine lottoMachine = new LottoMachine();
  //       lottoMachine.RankLottos();

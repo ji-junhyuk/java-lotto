@@ -13,10 +13,11 @@ public class LottoMachine {
     private static final int MAXIMUM_LOTTO_NUMBER = 45;
 
 
-    public static void selectLottoNumbersAllLotto(int buyLottoCount) {
+    public static List<Lotto> selectLottoNumbersAllLotto(int buyLottoCount) {
         List<Lotto> lottos = new ArrayList<>();
         for (int i = 0; i < buyLottoCount; ++i)
             lottos.add(getLottoNumbers());
+        return lottos;
     }
 
     private static Lotto getLottoNumbers() {
