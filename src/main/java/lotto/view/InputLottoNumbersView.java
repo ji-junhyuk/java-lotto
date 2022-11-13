@@ -20,7 +20,7 @@ public class InputLottoNumbersView {
     private static final String ONLY_NUMBER_ERROR_MESSAGE = "[ERROR] 로또 보너스번호는 숫자로 이루어져야 합니다.";
     private static final String ASK_LOTTO_BONUS_NUMBER_MESSAGE = "보너스 번호를 입력해 주세요.";
 
-    public static void GetWinningNumbers() {
+    public static List<Integer> GetWinningNumbers() {
         String line;
 
         System.out.println(ASK_LOTTO_WINNING_NUMBERS_MESSAGE);
@@ -30,10 +30,10 @@ public class InputLottoNumbersView {
                 .map(element-> Integer.parseInt(element))
                 .collect(Collectors.toList());
         validateLottoWinningNumbers(lottoWinningNumbers, false);
-        GetBonusNumber(lottoWinningNumbers);
+        return GetBonusNumber(lottoWinningNumbers);
     }
 
-    private static void GetBonusNumber(List<Integer> lottoWinningNumbers) {
+    private static List<Integer> GetBonusNumber(List<Integer> lottoWinningNumbers) {
         String line;
 
         System.out.println(ASK_LOTTO_BONUS_NUMBER_MESSAGE);
@@ -41,6 +41,7 @@ public class InputLottoNumbersView {
         validateOnlyNumber(line);
         lottoWinningNumbers.add(Integer.parseInt(line));
         validateLottoWinningNumbers(lottoWinningNumbers, true);
+        return lottoWinningNumbers;
     }
 
     public static void validateOnlyNumber(String line) {

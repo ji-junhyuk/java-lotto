@@ -8,7 +8,6 @@ import java.util.List;
 import static java.util.stream.Collectors.toList;
 
 public class LottoMachine {
-//    private static final List<Integer> lottoNumbers;
     private static final int MINIMUM_LOTTO_NUMBER = 1;
     private static final int MAXIMUM_LOTTO_NUMBER = 45;
 

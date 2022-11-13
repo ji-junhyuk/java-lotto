@@ -16,9 +16,5 @@ public class LottoController {
         player.buyLotto(LottoMachine.selectLottoNumbersAllLotto(player.getBuyLottoCount()));
         InputMoneyView.printBuyLottoNumbers(player.getLottos());
         Presenter presenter = new Presenter(InputLottoNumbersView.GetWinningNumbers());
- //       Presenter presenter = new Presenter(GetWinningnumbers());
- //       LottoMachine lottoMachine = new LottoMachine();
- //       lottoMachine.RankLottos();
-
     }
 }
