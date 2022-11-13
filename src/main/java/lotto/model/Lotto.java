@@ -11,10 +11,21 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+        validateSize(numbers);
+        validateOneToFoutyFive(numbers);
+    }
+
+    private void validateOneToFoutyFive(List<Integer> numbers) {
+        for (int idx = 0; idx < 6; ++idx) {
+            if (numbers.get(idx) < 1 || numbers.get(idx) > 45) {
+                throw new IllegalArgumentException("[ERROR] 로또 번호는 1과 45사이의 숫자이어야 합니다.");
+            }
         }
     }
 
-    // TODO: 추가 기능 구현
+    private void validateSize(List<Integer> numbers) {
+        if (numbers.size() != 6) {
+            throw new IllegalArgumentException("[ERROR] 로또 번호 갯수는 6개이어야 합니다.");
+        }
+    }
 }
