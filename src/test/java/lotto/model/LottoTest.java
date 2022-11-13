@@ -1,6 +1,5 @@
 package lotto.model;
 
-import lotto.view.PlayerInputView;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

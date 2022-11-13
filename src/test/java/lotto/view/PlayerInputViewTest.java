@@ -1,6 +1,5 @@
 package lotto.view;
 
-import lotto.model.Player;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -13,7 +12,7 @@ public class PlayerInputViewTest {
     void createInputMoneyTest1() {
         String money = "0";
 
-        assertThatThrownBy(() -> PlayerInputView.validateInputMoney(money))
+        assertThatThrownBy(() -> InputView.validateInputMoney(money))
                 .isInstanceOf(IllegalArgumentException.class);
     }
     @Test
@@ -21,7 +20,7 @@ public class PlayerInputViewTest {
     void createInputMoneyTest2() {
         String money = "10 00";
 
-        assertThatThrownBy(() -> PlayerInputView.validateInputMoney(money))
+        assertThatThrownBy(() -> InputView.validateInputMoney(money))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }

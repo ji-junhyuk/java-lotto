@@ -28,4 +28,8 @@ public class Lotto {
             throw new IllegalArgumentException("[ERROR] 로또 번호 갯수는 6개이어야 합니다.");
         }
     }
+
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
 }

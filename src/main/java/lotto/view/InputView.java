@@ -50,7 +50,7 @@ public class InputView {
     private static void PrintEachLottoNumbers(Lotto lotto) {
         String combinedLottoNumbers = lotto.getNumbers()
                 .stream()
-                .map(number -> String.valueOf(number))
+                .map(lottoNumbers -> String.valueOf(lottoNumbers))
                 .collect(Collectors.joining(", "));
         System.out.println("[" + combinedLottoNumbers + "]");
     }
