@@ -1,5 +1,6 @@
 package lotto.view;
 
+import lotto.model.Presenter;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -37,20 +38,20 @@ public class InputLottoNumbersViewTest {
     @Test
     @DisplayName("로또 당첨번호는 중복 없이 6개의 숫자이어야 한다.(case: 7개)")
     void InputWinningNumbersTest4() {
-        assertThatThrownBy(() -> InputLottoNumbersView.validateLottoWinningNumbers(List.of(1, 2, 3, 4, 5, 6, 7), false))
+        assertThatThrownBy(() -> InputLottoNumbersView.validateLottoWinningNumbers(List.of(1, 2, 3, 4, 5, 6, 7)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
     @Test
-    @DisplayName("로또 당첨번호(보너스포함)는 중복 없이 7개의 숫자이어야 한다.(case: 중복숫자)")
+    @DisplayName("로또 당첨번호는 중복 없이 6개의 숫자이어야 한다.(case: 중복숫자)")
     void InputWinningNumbersTest5() {
-        assertThatThrownBy(() -> InputLottoNumbersView.validateLottoWinningNumbers(List.of(1, 2, 3, 4, 5, 6, 6), true))
+        assertThatThrownBy(() -> InputLottoNumbersView.validateLottoWinningNumbers(List.of(1, 2, 3, 4, 5, 5)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
-    @DisplayName("로또 당첨번호(보너스포함)는 중복 없이 7개의 숫자이어야 한다.(case: 8개)")
+    @DisplayName("로또 당첨번호(보너스포함)는 중복 없이 7개의 숫자이어야 한다.(case: 중복 번호)")
     void InputWinningNumbersTest6() {
-        assertThatThrownBy(() -> InputLottoNumbersView.validateLottoWinningNumbers(List.of(1, 2, 3, 4, 5, 6, 7, 8), true))
+        assertThatThrownBy(() -> new Presenter(List.of(1, 2, 3, 4, 5, 6), 6))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
