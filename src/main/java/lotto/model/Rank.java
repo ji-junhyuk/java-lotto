@@ -22,7 +22,7 @@ public enum Rank {
         this(correspondCount, false);
     }
 
-    public static Rank scoreRank(int correspondCount, boolean bonus) {
+    public static Rank scoreRank(long correspondCount, boolean bonus) {
         return Arrays.stream(Rank.values())
                 .filter(rank -> rank.correspondCount == correspondCount)
                 .filter(rank -> rank.isBonus == bonus)

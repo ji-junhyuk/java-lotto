@@ -5,6 +5,7 @@ import lotto.model.Player;
 import lotto.model.Presenter;
 import lotto.view.InputLottoNumbersView;
 import lotto.view.InputMoneyView;
+import lotto.view.ResultView;
 
 import java.util.List;
 
@@ -18,6 +19,7 @@ public class LottoController {
         Presenter presenter = new Presenter(InputLottoNumbersView.GetWinningNumbers(), InputLottoNumbersView.GetBonusNumber());
 
         lottoMachine.compareWinningNumbers(player.getLottos(), presenter.getLottoWinningNumbers(), presenter.getBonusNumber());
+        ResultView.printLottoResult(lottoMachine.getLottoResults());
         System.out.println(lottoMachine.getLottoResults());
       //  LottoResultView.printLottoResult();
     }
