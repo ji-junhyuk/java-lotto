@@ -19,6 +19,7 @@ public class InputLottoNumbersView {
 
     private static final String ONLY_NUMBER_ERROR_MESSAGE = "[ERROR] 로또 보너스번호는 숫자로 이루어져야 합니다.";
     private static final String ASK_LOTTO_BONUS_NUMBER_MESSAGE = "보너스 번호를 입력해 주세요.";
+    private static final int LOTTO_WINNING_NUMBERS = 6;
 
     public static List<Integer> GetWinningNumbers() {
         String line;
@@ -29,19 +30,18 @@ public class InputLottoNumbersView {
         List<Integer> lottoWinningNumbers = Arrays.stream(line.split(","))
                 .map(element-> Integer.parseInt(element))
                 .collect(Collectors.toList());
-        validateLottoWinningNumbers(lottoWinningNumbers, false);
-        return GetBonusNumber(lottoWinningNumbers);
+        validateLottoWinningNumbers(lottoWinningNumbers);
+        return lottoWinningNumbers;
     }
 
-    private static List<Integer> GetBonusNumber(List<Integer> lottoWinningNumbers) {
+    public static Integer GetBonusNumber() {
         String line;
 
         System.out.println(ASK_LOTTO_BONUS_NUMBER_MESSAGE);
         line = Console.readLine();
         validateOnlyNumber(line);
-        lottoWinningNumbers.add(Integer.parseInt(line));
-        validateLottoWinningNumbers(lottoWinningNumbers, true);
-        return lottoWinningNumbers;
+
+        return (Integer.parseInt(line));
     }
 
     public static void validateOnlyNumber(String line) {
@@ -49,29 +49,25 @@ public class InputLottoNumbersView {
             throw new IllegalArgumentException(ONLY_NUMBER_ERROR_MESSAGE);
     }
 
-    public static void validateLottoWinningNumbers(List<Integer> lottoWinningNumbers, boolean bonus_number) {
-        int size = 6;
-
-        if (bonus_number == true)
-            size += 1;
-        validateWinningNumberSize(lottoWinningNumbers, size);
-        validateWinningNumberRange(lottoWinningNumbers, size);
+    public static void validateLottoWinningNumbers(List<Integer> lottoWinningNumbers) {
+        validateWinningNumberSize(lottoWinningNumbers);
+        validateWinningNumberRange(lottoWinningNumbers);
     }
 
-    private static void validateWinningNumberRange(List<Integer> lottoWinningNumbers, int size) {
-        for (int idx = 0; idx < size; ++idx) {
+    private static void validateWinningNumberRange(List<Integer> lottoWinningNumbers) {
+        for (int idx = 0; idx < lottoWinningNumbers.size(); ++idx) {
             if (lottoWinningNumbers.get(idx) < 1 || lottoWinningNumbers.get(idx) > 45) {
                 throw new IllegalArgumentException(OUT_OF_RANGE_ERROR_MESSAGE);
             }
         }
     }
 
-    private static void validateWinningNumberSize(List<Integer> lottoWinningNumbers, int size) {
+    private static void validateWinningNumberSize(List<Integer> lottoWinningNumbers) {
         Set<Integer> integerSet = new HashSet<>();
         for (int idx = 0; idx < lottoWinningNumbers.size(); ++idx) {
             integerSet.add(lottoWinningNumbers.get(idx));
         }
-        if (integerSet.size() != size) {
+        if (integerSet.size() != LOTTO_WINNING_NUMBERS) {
             throw new IllegalArgumentException(DUPLICATE_AND_NOT_MATCH_SIZE_ERROR_MESSAGE);
         }
     }
